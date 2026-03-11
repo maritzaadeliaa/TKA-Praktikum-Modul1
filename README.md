@@ -59,9 +59,11 @@ COPY index.html /var/www/html/index.html
 EXPOSE 80
 
 # Materi Poin G - CMD: Perintah yang dijalankan saat container dimulai.
-# Menjalankan Nginx di foreground. Ini WAJIB agar container tetap hidup.
-# Tanpa "daemon off;", container akan langsung berhenti karena Nginx berjalan di background.
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]  # Jalankan Nginx sebagai proses utama di container
+                                     # - nginx       : perintah untuk menjalankan web server Nginx
+                                     # - -g          : memberikan global directive untuk Nginx
+                                     # - "daemon off;": agar Nginx berjalan di foreground (tidak di background)
+                                     #                  penting supaya container tidak berhenti otomatis
 ```
 
 ### 5. Build kedua image dengan format nama berikut:
